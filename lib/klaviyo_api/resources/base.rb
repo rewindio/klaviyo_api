@@ -51,6 +51,11 @@ module KlaviyoAPI
       JSON.parse(attributes.to_json).symbolize_keys
     end
 
+    # def find(*arguments)
+    #   arguments[1] = arguments[1] || { params: {} }
+    #   super *arguments
+    # end
+
     # def update
     #   # this is going to generate the path with the :id in it
     #   path = element_path prefix_options

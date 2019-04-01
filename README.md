@@ -22,24 +22,18 @@ gem 'klaviyo_api'
 require 'klaviyo_api'
 
 class Account
-  attr_accessor :access_token
+  attr_accessor :api_key
 
-  def initialize(access_token)
-    @access_token = access_token
+  def initialize(api_key)
+    @api_key = api_key
   end
 
-  def with_klaviyo_session(█)
-    KlaviyoAPI::Session.temp access_token, █
+  def with_klaviyo_session(&block)
+    KlaviyoAPI::Session.temp api_key, &block
   end
 end
 
-account = Account.new 'xxxyyyzzz'
-```
-
-### GET `/`
-
-```ruby
-account.with_klaviyo_session { KlaviyoAPI::AccountInformation.find '' }
+account = Account.new 'pk_xxxyyyzzz'
 ```
 
 ### GET `/lists`
@@ -48,13 +42,19 @@ account.with_klaviyo_session { KlaviyoAPI::AccountInformation.find '' }
 account.with_klaviyo_session { KlaviyoAPI::List.all }
 ```
 
+### GET `/list/:list_id`
+
+```ruby
+account.with_klaviyo_session { KlaviyoAPI::List.find 'AbC123xYz' }
+```
+
 ## Development
 
 After checking out the repository, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests.
 
 You can also run `bin/console` for an interactive prompt that will allow you to experiment. You can create a file in the root of the project called `dev-config.yml` and add your API key to it:
 
-```
+```yaml
 api_key: <your-api-key>
 ```
 
