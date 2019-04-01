@@ -36,17 +36,20 @@ module KlaviyoAPI
       rescue ActiveResource::ResourceNotFound
         false
       end
+
+      protected
+
+      def element_path(id, prefix_options = {}, query_options = nil)
+        check_prefix_options(prefix_options)
+
+        prefix_options, query_options = split_options(prefix_options) if query_options.nil?
+        "#{prefix(prefix_options)}list/#{URI.parser.escape id.to_s}#{format_extension}#{query_string(query_options)}"
+      end
     end
 
     def to_h
       JSON.parse(attributes.to_json).symbolize_keys
     end
-
-    # def find(*arguments)
-    #   binding.pry
-    #   arguments[1] = arguments[1] || { params: {} }
-    #   super *arguments
-    # end
 
     # def update
     #   # this is going to generate the path with the :id in it
