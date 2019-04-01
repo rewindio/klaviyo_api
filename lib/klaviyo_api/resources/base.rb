@@ -37,43 +37,16 @@ module KlaviyoAPI
         false
       end
 
-      protected
-
       def element_path(id, prefix_options = {}, query_options = nil)
         check_prefix_options(prefix_options)
 
         prefix_options, query_options = split_options(prefix_options) if query_options.nil?
-        "#{prefix(prefix_options)}list/#{URI.parser.escape id.to_s}#{format_extension}#{query_string(query_options)}"
+        "#{prefix(prefix_options)}#{element_name}/#{URI.parser.escape id.to_s}#{format_extension}#{query_string(query_options)}"
       end
     end
 
     def to_h
       JSON.parse(attributes.to_json).symbolize_keys
     end
-
-    # def find(*arguments)
-    #   arguments[1] = arguments[1] || { params: {} }
-    #   super *arguments
-    # end
-
-    # def update
-    #   # this is going to generate the path with the :id in it
-    #   path = element_path prefix_options
-
-    #   # v2 endpoints don't allow the :id in the params
-    #   # id = attributes.delete :id
-
-    #   run_callbacks :update do
-    #     connection.put(path, encode, self.class.headers).tap do |response|
-    #       self.id = id_from_response response
-
-    #       load_attributes_from_response response
-    #     end
-    #   end
-    # rescue
-    #   self.id = id
-
-    #   raise
-    # end
   end
 end

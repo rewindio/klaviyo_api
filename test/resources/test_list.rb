@@ -3,14 +3,14 @@
 require 'test_helper'
 
 describe KlaviyoAPI::List do
-  BASE_LIST_URL = 'https://a.klaviyo.com/api/v2/lists'
+  BASE_LIST_URL = 'https://a.klaviyo.com/api/v2'
   LIST_ID = 'M2q6kN'
 
   before do
-    stub_request(:get, BASE_LIST_URL)
+    stub_request(:get, BASE_LIST_URL + '/lists')
       .to_return body: load_fixture(:lists)
 
-    stub_request(:get, BASE_LIST_URL + "/#{LIST_ID}")
+    stub_request(:get, BASE_LIST_URL + "/list/#{LIST_ID}")
       .to_return body: load_fixture(:list)
   end
 
@@ -19,6 +19,14 @@ describe KlaviyoAPI::List do
 
     assert_kind_of ActiveResource::Collection, lists
     assert_instance_of KlaviyoAPI::List, lists.first
+  end
+
+  it 'uses the proper collection path' do
+    assert_equal KlaviyoAPI::List.collection_path, '/api/v2/lists'
+  end
+
+  it 'uses the proper element path' do
+    assert_equal KlaviyoAPI::List.element_path('abc123'), '/api/v2/list/abc123'
   end
 
   describe 'GET /lists' do
@@ -42,14 +50,14 @@ describe KlaviyoAPI::List do
 
   describe 'update' do
     it 'calls PUT /lists/:list_id/' do
-      stub_request(:put, BASE_LIST_URL + "/#{LIST_ID}")
+      stub_request(:put, BASE_LIST_URL + "/list/#{LIST_ID}")
         .to_return status: 200
 
       list = KlaviyoAPI::List.find LIST_ID
       list.list_name = 'something else'
       list.save
 
-      assert_requested :put, BASE_LIST_URL + "/#{LIST_ID}"
+      assert_requested :put, BASE_LIST_URL + "/list/#{LIST_ID}"
     end
   end
 end
