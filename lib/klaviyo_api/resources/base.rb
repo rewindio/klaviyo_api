@@ -43,7 +43,6 @@ module KlaviyoAPI
     end
 
     # def find(*arguments)
-    #   binding.pry
     #   arguments[1] = arguments[1] || { params: {} }
     #   super *arguments
     # end

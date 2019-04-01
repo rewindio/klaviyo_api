@@ -18,9 +18,6 @@ describe KlaviyoAPI::JsonFormatter do
     assert_kind_of Hash, decoded_json
 
     assert decoded_json.key?('lists')
-    assert decoded_json.key?('total_items')
-    assert decoded_json.key?('_links')
-
-    assert_equal decoded_json['lists'].count, 2
+    assert_equal decoded_json['lists'].count, 3
   end
 end

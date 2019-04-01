@@ -32,7 +32,6 @@ describe KlaviyoAPI::List do
   describe 'GET /lists/:list_id' do
     it 'fetches specific list' do
       list = KlaviyoAPI::List.find LIST_ID
-      binding.pry
 
       assert_equal LIST_ID, list.id
       assert_empty list.prefix_options
@@ -45,8 +44,6 @@ describe KlaviyoAPI::List do
     it 'calls PUT /lists/:list_id/' do
       stub_request(:put, BASE_LIST_URL + "/#{LIST_ID}")
         .to_return status: 200
-
-      binding.pry
 
       list = KlaviyoAPI::List.find LIST_ID
       list.list_name = 'something else'
