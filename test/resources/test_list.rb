@@ -60,4 +60,31 @@ describe KlaviyoAPI::List do
       assert_requested :put, BASE_LIST_URL + "/list/#{LIST_ID}"
     end
   end
+
+  describe 'create' do
+    it 'calls POST /lists' do
+      stub_request(:post, BASE_LIST_URL + '/lists')
+        .to_return status: 200
+
+      list = KlaviyoAPI::List.new
+      list.list_name = 'new list'
+
+      list.save
+
+      assert_requested :post, BASE_LIST_URL + '/lists'
+    end
+  end
+
+  describe 'delete' do
+    it 'calls DELETE /list/:list_id' do
+      stub_request(:delete, BASE_LIST_URL + "/list/#{LIST_ID}")
+        .to_return status: 200
+
+      list = KlaviyoAPI::List.find LIST_ID
+
+      list.destroy
+
+      assert_requested :delete, BASE_LIST_URL + "/list/#{LIST_ID}"
+    end
+  end
 end
