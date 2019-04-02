@@ -15,9 +15,7 @@ describe KlaviyoAPI::JsonFormatter do
 
     decoded_json = json_formatter.decode load_fixture(:lists)
 
-    assert_kind_of Hash, decoded_json
-
-    assert decoded_json.key?('lists')
-    assert_equal decoded_json['lists'].count, 3
+    assert_kind_of Array, decoded_json
+    assert_equal decoded_json.count, 3
   end
 end

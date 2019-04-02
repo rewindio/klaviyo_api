@@ -31,12 +31,6 @@ module KlaviyoAPI
         _headers || {}
       end
 
-      def exists?(id, options = {})
-        true if find id, options.deep_merge(params: { fields: primary_key })
-      rescue ActiveResource::ResourceNotFound
-        false
-      end
-
       def element_path(id, prefix_options = {}, query_options = nil)
         check_prefix_options(prefix_options)
 

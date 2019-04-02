@@ -39,20 +39,4 @@ describe KlaviyoAPI::Base do
     assert_nil KlaviyoAPI::Base.headers['api-key']
     assert_equal KlaviyoAPI::Base.site.to_s, KlaviyoAPI.configuration.url
   end
-
-  describe 'exists' do
-    it 'returns false if item not found' do
-      stub_request(:get, 'https://a.klaviyo.com/v2/bases/123?fields=id')
-        .to_return status: 404
-
-      assert_equal false, KlaviyoAPI::Base.exists?(123)
-    end
-
-    it 'returns true if item found' do
-      stub_request(:get, 'https://a.klaviyo.com/v2/bases/123?fields=id')
-        .to_return status: 200, body: '{}'
-
-      assert_equal true, KlaviyoAPI::Base.exists?(123)
-    end
-  end
 end

@@ -21,5 +21,4 @@ require 'klaviyo_api/detailed_log_subscriber'
 require 'klaviyo_api/exceptions'
 require 'klaviyo_api/session'
 
-require 'klaviyo_api/collection_parsers'
 require 'klaviyo_api/resources'

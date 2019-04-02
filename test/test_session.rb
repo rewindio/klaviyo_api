@@ -16,7 +16,7 @@ describe KlaviyoAPI::Session do
     assert_equal KlaviyoAPI::Base.site.to_s, KlaviyoAPI.configuration.url
 
     KlaviyoAPI::Session.temp(api_key) do
-      assert_equal KlaviyoAPI::Base.headers['api-key'], "#{api_key}"
+      assert_equal KlaviyoAPI::Base.headers['api-key'], api_key.to_s
     end
 
     assert_nil KlaviyoAPI::Base.headers['api-key']
