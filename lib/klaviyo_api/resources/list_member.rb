@@ -15,9 +15,26 @@ module KlaviyoAPI
       # does not support DELETE bodies (as per the HTTP spec).
       #
       # https://www.klaviyo.com/docs/api/v2/lists#delete-members
-      def delete(id, options = {})
-        options = options.merge({emails: id})
+      def delete(email, options = {})
+        options = options.merge({emails: email})
         connection.delete(element_path('', options), headers)
+      end
+
+      # A shortcut to create multiple ListMembers at once, as supported
+      # by the Klaviyo API.
+      #
+      # https://www.klaviyo.com/docs/api/v2/lists#post-members
+      def bulk_create(list_members, options = {})
+        payload = { profiles: list_members }.to_json
+
+        saved_list_members = []
+        connection.post(collection_path(options), payload, headers).tap do |response|
+          list_members_json = JSON.parse(response.body)
+          list_members_json.each do |list_member_json|
+            saved_list_members << KlaviyoAPI::ListMember.new(list_member_json)
+          end
+        end
+        saved_list_members
       end
     end
 
@@ -43,7 +60,7 @@ module KlaviyoAPI
     # https://www.klaviyo.com/docs/api/v2/lists#delete-members
     def destroy
       run_callbacks :destroy do
-        KlaviyoAPI::Member.delete self.email, prefix_options
+        KlaviyoAPI::ListMember.delete self.email, prefix_options
       end
     end
 

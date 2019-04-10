@@ -14,6 +14,9 @@ module KlaviyoAPI
     end
 
     # Gets all Members of this List. Uses the Groups endpoint.
+    # Returns an enumerator that knows how to transparently deal
+    # with Klaviyo's `marker` for pagination. Pages seem to be
+    # 2000 items.
     #
     # https://www.klaviyo.com/docs/api/v2/lists#get-members-all
     def members(options = {})
