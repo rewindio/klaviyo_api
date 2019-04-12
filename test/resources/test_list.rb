@@ -91,7 +91,7 @@ describe KlaviyoAPI::List do
   describe 'members' do
     it 'returns an enumerator over ListMembers' do
       stub_request(:get, BASE_LIST_URL + "/group/#{LIST_ID}/members/all")
-        .to_return status: 200, body: load_fixture(:list_members_with_marker)
+        .to_return status: 200, body: load_fixture(:list_members_records_with_marker)
 
       list = KlaviyoAPI::List.find LIST_ID
 
@@ -104,9 +104,9 @@ describe KlaviyoAPI::List do
 
     it 'makes multiple requests to get all members' do
       stub_request(:get, BASE_LIST_URL + "/group/#{LIST_ID}/members/all")
-        .to_return status: 200, body: load_fixture(:list_members_with_marker)
+        .to_return status: 200, body: load_fixture(:list_members_records_with_marker)
       stub_request(:get, BASE_LIST_URL + "/group/#{LIST_ID}/members/all?marker=12345")
-        .to_return status: 200, body: load_fixture(:list_members_without_marker)
+        .to_return status: 200, body: load_fixture(:list_members_records_without_marker)
 
       list = KlaviyoAPI::List.find LIST_ID
       members = list.members
