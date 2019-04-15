@@ -34,8 +34,10 @@ module KlaviyoAPI
       def element_path(id, prefix_options = {}, query_options = nil)
         check_prefix_options(prefix_options)
 
+        id = URI.parser.escape id.to_s
         prefix_options, query_options = split_options(prefix_options) if query_options.nil?
-        "#{prefix(prefix_options)}#{element_name}/#{URI.parser.escape id.to_s}#{format_extension}#{query_string(query_options)}"
+
+        "#{prefix(prefix_options)}#{element_name}#{'/' + id if id.present?}#{format_extension}#{query_string(query_options)}"
       end
     end
 
