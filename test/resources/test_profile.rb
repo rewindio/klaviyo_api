@@ -57,6 +57,29 @@ describe KlaviyoAPI::Profile do
     end
   end
 
+  describe 'create' do
+    it 'raises InvalidOperation' do
+      error = assert_raises KlaviyoAPI::InvalidOperation do
+        KlaviyoAPI::Profile.create
+      end
+
+      assert_match 'Cannot create Profiles via API.', error.message
+    end
+  end
+
+  describe 'update' do
+    it 'adds all attributes to the URL' do
+      stub_request(:put, "#{BASE_PROFILE_URL}/person/#{PERSON_ID}?$title=MyTitle&api_key=&id=#{PERSON_ID}")
+        .to_return body: load_fixture(:person)
+
+      profile = KlaviyoAPI::Profile.new id: PERSON_ID, '$title': 'MyTitle'
+
+      profile.update
+
+      assert_requested :put, "#{BASE_PROFILE_URL}/person/#{PERSON_ID}?$title=MyTitle&api_key=&id=#{PERSON_ID}", body: nil
+    end
+  end
+
   describe 'method_missing' do
     it 'is aware of attributes starting with $' do
       profile = KlaviyoAPI::Profile.new '$title': 'MyTitle'
