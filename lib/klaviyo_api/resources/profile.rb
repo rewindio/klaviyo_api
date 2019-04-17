@@ -27,13 +27,13 @@ module KlaviyoAPI
     def method_missing(method_symbol, *arguments)
       method_name = method_symbol.to_s
 
-      # Some fields start with a $ (e.g., '$title'). If the method_name
-      # provided doesn't start with any known attribute, it might start
-      # with a $. This allows us to call `profile.title` to access `$title`.
+      # Some fields start with a $ (e.g., '$title'). The methods `title`, `title?`
+      # and `title=` should act upon the attribute `$title` if present. Otherwise,
+      # they should act upon the attribute `title`
       #
       # Not a whole lot we can do if the item contains both `title` and `$title` -
-      # this will prioritize the version without the $.
-      unless attributes.keys.any? { |attribute| method_name =~ /^#{attribute}[?=]?/ }
+      # this will prioritize the version with the $.
+      if attributes.keys.any? { |attribute| attribute == "$#{method_name.sub(/\?|=$/, '')}" }
         method_symbol = "$#{method_name}".to_sym
       end
 

@@ -74,15 +74,15 @@ describe KlaviyoAPI::Profile do
       assert_equal 'McTesterson2', profile.last_name
     end
 
-    it 'prioritizes attributes NOT starting with $' do
+    it 'prioritizes attributes starting with $' do
       profile = KlaviyoAPI::Profile.new 'title': 'MyTitle', '$title': '$MyTitle'
 
-      assert_equal 'MyTitle', profile.title
-      profile.title = 'YourTitle'
-      assert_equal 'YourTitle', profile.title
+      assert_equal '$MyTitle', profile.title
+      profile.title = '$YourTitle'
+      assert_equal '$YourTitle', profile.title
 
-      assert_equal 'YourTitle', profile.attributes['title']
-      assert_equal '$MyTitle', profile.attributes['$title']
+      assert_equal 'MyTitle', profile.attributes['title']
+      assert_equal '$YourTitle', profile.attributes['$title']
     end
   end
 end
