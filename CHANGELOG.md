@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.3.0]
+
+### Added
+
+ - Support `/v1/person/<id>`
+ - Support `/v1/people`
+ - Support `.count` on Profile
+
 ## [1.2.0]
 
 ### Added
