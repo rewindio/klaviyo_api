@@ -2,6 +2,8 @@
 
 module KlaviyoAPI
   class Profile < Base
+    extend KlaviyoAPI::Support::Countable
+
     self.prefix += 'v1/'
 
     self.element_name = 'person'
