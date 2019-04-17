@@ -4,7 +4,6 @@ module KlaviyoAPI
   class Profile < Base
     self.prefix += 'v1/'
 
-    self.collection_name = 'people'
     self.element_name = 'person'
     self.collection_parser = KlaviyoAPI::Collections::Profile
 
