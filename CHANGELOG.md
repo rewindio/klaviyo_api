@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.3.1]
+
+### Changed
+
+ - Improve performance of `.count` by only getting the first item instead of the first page
+
 ## [1.3.0]
 
 ### Added
