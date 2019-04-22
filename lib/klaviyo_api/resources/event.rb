@@ -4,16 +4,12 @@ module KlaviyoAPI
   # Klaviyo has the concept of "timelines" on Metrics.
   # A single entry in that timeline is an Event.
   class Event < Base
-    extend KlaviyoAPI::Support::Countable
-
     ORIGINAL_PREFIX = '/api/v1/metric/:metric_id/'
     self.prefix = ORIGINAL_PREFIX
 
     self.element_name = 'timeline'
     self.collection_name = 'timeline'
     self.collection_parser = KlaviyoAPI::Collections::NextMarkerCollection
-
-    has_many :events, class_name: 'KlaviyoAPI::Event'
 
     class << self
       def find_single(scope, options)
