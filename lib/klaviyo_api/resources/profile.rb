@@ -7,7 +7,7 @@ module KlaviyoAPI
     self.prefix += 'v1/'
 
     self.element_name = 'person'
-    self.collection_parser = KlaviyoAPI::Collections::Profile
+    self.collection_parser = KlaviyoAPI::Collections::PaginatedCollection
 
     class << self
       def collection_path(prefix_options = {}, query_options = {})
@@ -20,11 +20,11 @@ module KlaviyoAPI
     end
 
     def destroy
-      raise KlaviyoAPI::InvalidOperation.new 'Cannot delete Profiles via API.'
+      raise KlaviyoAPI::InvalidOperation, 'Cannot delete Profiles via API.'
     end
 
     def create
-      raise KlaviyoAPI::InvalidOperation.new 'Cannot create Profiles via API.'
+      raise KlaviyoAPI::InvalidOperation, 'Cannot create Profiles via API.'
     end
 
     def update

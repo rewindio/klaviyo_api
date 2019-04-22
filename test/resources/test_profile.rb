@@ -17,7 +17,7 @@ describe KlaviyoAPI::Profile do
   it 'instantiates proper class' do
     profiles = KlaviyoAPI::Profile.all
 
-    assert_kind_of KlaviyoAPI::Collections::Profile, profiles
+    assert_kind_of KlaviyoAPI::Collections::PaginatedCollection, profiles
     assert_instance_of KlaviyoAPI::Profile, profiles.first
   end
 

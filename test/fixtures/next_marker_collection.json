@@ -1,0 +1,45 @@
+{
+  "count": 1,
+  "object": "$list",
+  "data": [
+    {
+      "event_properties": {
+        "List": "Testy's First Klaviyo List",
+        "$event_id": "1554915521"
+      },
+      "uuid": "e45ab680-5bb1-11e9-8001-a0dcc2d8d5f1",
+      "event_name": "Subscribed to List",
+      "timestamp": 1554915521,
+      "object": "event",
+      "datetime": "2019-04-10 16:58:41+00:00",
+      "person": {
+        "updated": "2019-04-10 16:58:42",
+        "last_name": "",
+        "$longitude": "",
+        "$email": "testy+quickadd2@rewind.io",
+        "object": "person",
+        "$latitude": "",
+        "$address1": "",
+        "$address2": "",
+        "$title": "",
+        "$timezone": "",
+        "id": "LgBjLU",
+        "first_name": "",
+        "$organization": "",
+        "$region": "",
+        "$id": "",
+        "created": "2019-04-10 16:58:41",
+        "$last_name": "",
+        "$phone_number": "",
+        "$country": "",
+        "$zip": "",
+        "$first_name": "",
+        "$city": "",
+        "email": "testy+quickadd2@rewind.io"
+      },
+      "statistic_id": "LKzxjs",
+      "id": "3diypCJa"
+    }
+  ],
+  "next": "e45ab680-5bb1-11e9-8001-a0dcc2d8d5f1"
+}

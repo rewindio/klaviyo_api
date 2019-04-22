@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.4.0]
+
+### Added
+
+ - Support `/v1/metrics`, `/v1/metrics/timeline`
+ - Support `/v1/metrics/<id>/timeline`
+
 ## [1.3.1]
 
 ### Changed

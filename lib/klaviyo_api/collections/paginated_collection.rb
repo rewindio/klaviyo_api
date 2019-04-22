@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module KlaviyoAPI::Collections
-  class Profile < ActiveResource::Collection
+  # This collection is used for item types that rely on pagination and
+  # provide `page`, `page_size`, etc.
+  class PaginatedCollection < ActiveResource::Collection
     attr_accessor :total, :page, :page_size, :start, :end
     
     def initialize(response = {})
