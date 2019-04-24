@@ -1,0 +1,127 @@
+{
+  "end": 8,
+  "object": "$list",
+  "page_size": 9,
+  "start": 0,
+  "total": 9,
+  "data": [
+    {
+      "updated": "2019-03-28 13:22:35",
+      "name": "Active on Site",
+      "created": "2019-03-28 13:22:35",
+      "object": "metric",
+      "id": "QqeQeh",
+      "integration": {
+        "category": "API",
+        "object": "integration",
+        "id": "7FtS4J",
+        "name": "API"
+      }
+    },
+    {
+      "updated": "2019-03-28 13:22:35",
+      "name": "Bounced Email",
+      "created": "2019-03-28 13:22:35",
+      "object": "metric",
+      "id": "PMdMBE",
+      "integration": {
+        "category": "Internal",
+        "object": "integration",
+        "id": "0rG4eQ",
+        "name": "Klaviyo"
+      }
+    },
+    {
+      "updated": "2019-03-28 13:22:35",
+      "name": "Clicked Email",
+      "created": "2019-03-28 13:22:35",
+      "object": "metric",
+      "id": "Msq7PW",
+      "integration": {
+        "category": "Internal",
+        "object": "integration",
+        "id": "0rG4eQ",
+        "name": "Klaviyo"
+      }
+    },
+    {
+      "updated": "2019-03-28 13:22:35",
+      "name": "Dropped Email",
+      "created": "2019-03-28 13:22:35",
+      "object": "metric",
+      "id": "MmLRuy",
+      "integration": {
+        "category": "Internal",
+        "object": "integration",
+        "id": "0rG4eQ",
+        "name": "Klaviyo"
+      }
+    },
+    {
+      "updated": "2019-03-28 13:22:35",
+      "name": "Marked Email as Spam",
+      "created": "2019-03-28 13:22:35",
+      "object": "metric",
+      "id": "Lcn2AG",
+      "integration": {
+        "category": "Internal",
+        "object": "integration",
+        "id": "0rG4eQ",
+        "name": "Klaviyo"
+      }
+    },
+    {
+      "updated": "2019-03-28 13:22:35",
+      "name": "Opened Email",
+      "created": "2019-03-28 13:22:35",
+      "object": "metric",
+      "id": "KDYejt",
+      "integration": {
+        "category": "Internal",
+        "object": "integration",
+        "id": "0rG4eQ",
+        "name": "Klaviyo"
+      }
+    },
+    {
+      "updated": "2019-03-28 13:22:35",
+      "name": "Received Email",
+      "created": "2019-03-28 13:22:35",
+      "object": "metric",
+      "id": "PRR3X4",
+      "integration": {
+        "category": "Internal",
+        "object": "integration",
+        "id": "0rG4eQ",
+        "name": "Klaviyo"
+      }
+    },
+    {
+      "updated": "2019-04-09 12:48:00",
+      "name": "Subscribed to List",
+      "created": "2019-04-09 12:48:00",
+      "object": "metric",
+      "id": "LKzxjs",
+      "integration": {
+        "category": "Internal",
+        "object": "integration",
+        "id": "0rG4eQ",
+        "name": "Klaviyo"
+      }
+    },
+    {
+      "updated": "2019-03-28 13:22:35",
+      "name": "Unsubscribed",
+      "created": "2019-03-28 13:22:35",
+      "object": "metric",
+      "id": "MYMU7b",
+      "integration": {
+        "category": "Internal",
+        "object": "integration",
+        "id": "0rG4eQ",
+        "name": "Klaviyo"
+      }
+    }
+  ],
+  "page": 0
+}
