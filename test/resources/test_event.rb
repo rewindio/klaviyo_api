@@ -18,7 +18,7 @@ describe KlaviyoAPI::Event do
   it 'instantiates proper class' do
     metrics = KlaviyoAPI::Event.all
 
-    assert_kind_of KlaviyoAPI::Collections::NextMarkerCollection, metrics
+    assert_kind_of KlaviyoAPI::Collections::MarkerCollection, metrics
     assert_instance_of KlaviyoAPI::Event, metrics.first
   end
 
@@ -30,7 +30,7 @@ describe KlaviyoAPI::Event do
     end
 
     it 'returns path for specific Metric timeline if Metric ID given' do
-      assert_match %r{/api/v1/metric/#{METRIC_ID}/timeline}, KlaviyoAPI::Event.collection_path({metric_id: METRIC_ID})
+      assert_match %r{/api/v1/metric/#{METRIC_ID}/timeline}, KlaviyoAPI::Event.collection_path(metric_id: METRIC_ID)
     end
 
     it 'returns path for all Metrics timelines if no Metric ID given' do

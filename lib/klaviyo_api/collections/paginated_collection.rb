@@ -5,14 +5,14 @@ module KlaviyoAPI::Collections
   # provide `page`, `page_size`, etc.
   class PaginatedCollection < ActiveResource::Collection
     attr_accessor :total, :page, :page_size, :start, :end
-    
+
     def initialize(response = {})
-      @total  = response.delete 'total'
+      @total = response.delete 'total'
       @page = response.delete 'page'
       @page_size = response.delete 'page_size'
       @start = response.delete 'start'
       @end = response.delete 'end'
-      
+
       @elements = response['data'] || []
     end
   end

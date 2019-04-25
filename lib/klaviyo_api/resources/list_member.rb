@@ -16,7 +16,7 @@ module KlaviyoAPI
       #
       # https://www.klaviyo.com/docs/api/v2/lists#delete-members
       def delete(email, options = {})
-        options = options.merge({emails: email})
+        options = options.merge emails: email
         connection.delete(element_path('', options), headers)
       end
 
@@ -60,12 +60,12 @@ module KlaviyoAPI
     # https://www.klaviyo.com/docs/api/v2/lists#delete-members
     def destroy
       run_callbacks :destroy do
-        KlaviyoAPI::ListMember.delete self.email, prefix_options
+        KlaviyoAPI::ListMember.delete email, prefix_options
       end
     end
 
     def update
-      raise KlaviyoAPI::InvalidOperation.new 'Cannot update list members. You might be looking for delete and/or create.'
+      raise KlaviyoAPI::InvalidOperation, 'Cannot update list members. You might be looking for delete and/or create.'
     end
   end
 end

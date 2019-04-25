@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.5.0]
+
+### Added
+
+ - Support `/v2/list<id>/exclusions/all`
+ - MarkerCollections can now return the next page of results
+
 ## [1.4.0]
 
 ### Added

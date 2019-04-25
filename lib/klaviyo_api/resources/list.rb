@@ -5,6 +5,8 @@ module KlaviyoAPI
     self.prefix += 'v2/'
     self.primary_key = :list_id
 
+    has_many :exclusions, class_name: 'KlaviyoAPI::ListExclusion'
+
     class << self
       # Override this from ActiveResource#base in order to inject the id into the response
       # because its not returned
@@ -19,7 +21,7 @@ module KlaviyoAPI
     # 1000 items.
     #
     # https://www.klaviyo.com/docs/api/v2/lists#get-members-all
-    def members(options = {})
+    def members
       CachingEnumerator.new do |yielder|
         marker = nil
 
