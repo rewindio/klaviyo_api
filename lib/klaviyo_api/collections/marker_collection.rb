@@ -16,6 +16,10 @@ module KlaviyoAPI::Collections
       @elements = response['data'] || response['records'] || []
     end
 
+    def next_page_marker_name
+      'marker'
+    end
+
     def more_pages?
       !@next.nil?
     end

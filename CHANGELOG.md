@@ -7,6 +7,10 @@
  - Support `/v2/list<id>/exclusions/all`
  - MarkerCollections can now return the next page of results
 
+### Changed
+
+ - `List#members` has been replaced with `ListMember#all_members` and now returns a regular collection instead of an Enumerator
+
 ## [1.4.0]
 
 ### Added

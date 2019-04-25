@@ -2,7 +2,9 @@
 
 module KlaviyoAPI
   class ListMember < Base
-    self.prefix += 'v2/list/:list_id/'
+    ORIGINAL_PREFIX = '/api/v2/list/:list_id/'
+    self.prefix = ORIGINAL_PREFIX
+
     self.primary_key = :id
 
     # This is always plural
@@ -35,6 +37,31 @@ module KlaviyoAPI
           end
         end
         saved_list_members
+      end
+
+      # As opposed to #all, which hits and requires a list of emails to check for membership,
+      # this method hits https://www.klaviyo.com/docs/api/v2/lists#get-members-all and gets all
+      # ListMembers for a List.
+      def all_members(options)
+        # The rest becomes much easier if we temporarily modify the prefix.
+        # We set it back later, have no fear.
+        self.prefix = '/api/v2/group/:list_id/members/all'
+
+        prefix_options, query_options = split_options(options[:params])
+        path = "#{prefix(prefix_options)}#{format_extension}#{query_string(query_options)}"
+
+        # Very heavily inspired by `find_every`
+        response = format.decode(connection.get(path, headers).body) || []
+        collection = KlaviyoAPI::Collections::ListMembershipCollection.new(response).tap do |parser|
+          parser.resource_class  = self
+          parser.original_params = query_options
+        end
+
+        collection.collect! { |record| instantiate_record(record, prefix_options) }
+
+        self.prefix = ORIGINAL_PREFIX
+
+        collection
       end
     end
 

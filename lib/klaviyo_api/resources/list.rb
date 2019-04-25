@@ -9,7 +9,7 @@ module KlaviyoAPI
 
     class << self
       # Override this from ActiveResource#base in order to inject the id into the response
-      # because its not returned
+      # because it's not returned
       def find_single(scope, options)
         super.tap { |record| record.id = scope }
       end
@@ -21,25 +21,8 @@ module KlaviyoAPI
     # 1000 items.
     #
     # https://www.klaviyo.com/docs/api/v2/lists#get-members-all
-    def members
-      CachingEnumerator.new do |yielder|
-        marker = nil
-
-        loop do
-          path = "#{self.class.prefix}group/#{id}/members/all"
-          path += "?marker=#{marker}" if marker
-
-          response = JSON.parse(connection.get(path, self.class.headers).body)
-          marker = response['marker']
-          list_members = response['records']
-
-          list_members.each do |list_member|
-            yielder.yield KlaviyoAPI::ListMember.new list_member
-          end
-
-          break if marker.nil?
-        end
-      end
+    def members(options = {})
+      KlaviyoAPI::ListMember.all_members params: { list_id: id, **options }
     end
   end
 end
