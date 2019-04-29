@@ -4,7 +4,6 @@ $LOAD_PATH.unshift File.dirname(__FILE__)
 
 # gem requires
 require 'activeresource'
-require 'caching_enumerator'
 
 # gem extensions
 require 'active_resource/connection_ext'

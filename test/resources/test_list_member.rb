@@ -8,9 +8,9 @@ describe KlaviyoAPI::ListMember do
 
   it 'instantiates proper class' do
     stub_request(:get, BASE_LIST_MEMBERS_URL + '?emails=someone1@rewind.io')
-        .to_return status: 200, body: load_fixture(:list_member)
+      .to_return status: 200, body: load_fixture(:list_member)
 
-    member = KlaviyoAPI::ListMember.first params: {list_id: LIST_ID, emails: 'someone1@rewind.io'}
+    member = KlaviyoAPI::ListMember.first params: { list_id: LIST_ID, emails: 'someone1@rewind.io' }
 
     assert_instance_of KlaviyoAPI::ListMember, member
   end
@@ -71,7 +71,7 @@ describe KlaviyoAPI::ListMember do
       stub_request(:delete, BASE_LIST_MEMBERS_URL + '?emails=someone1@rewind.io')
         .to_return status: 200
 
-      KlaviyoAPI::ListMember.delete 'someone1@rewind.io', { list_id: LIST_ID }
+      KlaviyoAPI::ListMember.delete 'someone1@rewind.io', list_id: LIST_ID
 
       assert_requested :delete, BASE_LIST_MEMBERS_URL + '?emails=someone1@rewind.io'
     end
@@ -82,7 +82,7 @@ describe KlaviyoAPI::ListMember do
       stub_request(:delete, BASE_LIST_MEMBERS_URL + '?emails=someone1@rewind.io')
         .to_return status: 200
 
-      list_member = KlaviyoAPI::ListMember.new id: '123', email:'someone1@rewind.io', list_id: LIST_ID
+      list_member = KlaviyoAPI::ListMember.new id: '123', email: 'someone1@rewind.io', list_id: LIST_ID
       list_member.destroy
 
       assert_requested :delete, BASE_LIST_MEMBERS_URL + '?emails=someone1@rewind.io'

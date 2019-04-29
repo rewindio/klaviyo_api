@@ -9,7 +9,7 @@ module KlaviyoAPI
 
     self.element_name = 'timeline'
     self.collection_name = 'timeline'
-    self.collection_parser = KlaviyoAPI::Collections::NextMarkerCollection
+    self.collection_parser = KlaviyoAPI::Collections::EventCollection
 
     class << self
       def find_single(scope, options)

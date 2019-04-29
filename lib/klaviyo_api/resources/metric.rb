@@ -11,12 +11,12 @@ module KlaviyoAPI
     has_many :events, class_name: 'KlaviyoAPI::Event'
 
     class << self
-      def find_single(scope, options)
+      def find_single(_scope, _options)
         raise KlaviyoAPI::InvalidOperation, 'Cannot get single Metric via API. Please use KlaviyoAPI::Metric#all.'
       end
 
       def collection_path(prefix_options = {}, query_options = {})
-        super prefix_options, query_options.deep_merge({ api_key: headers['api-key'] })
+        super prefix_options, query_options.deep_merge(api_key: headers['api-key'])
       end
 
       # Get all Events for all Metrics
