@@ -48,7 +48,7 @@ describe KlaviyoAPI::ProfileExclusion do
 
       assert_requested(:post,
                        "#{BASE_PROFILE_URL}/people/exclusions?api_key=",
-                       body: { email: 'something@asdf.com' })
+                       body: 'email=something%40asdf.com')
     end
   end
 end
