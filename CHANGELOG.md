@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.6.0]
+
+### Added
+
+ - Support `/v1/people/exclusions`
+
 ## [1.5.0]
 
 ### Added
