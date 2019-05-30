@@ -1,0 +1,22 @@
+{
+    "end": 3,
+    "object": "$list",
+    "page_size": 2,
+    "start": 2,
+    "total": 4,
+    "data": [
+        {
+            "timestamp": "2019-05-29 15:03:15",
+            "reason": "manually_excluded",
+            "object": "exclusion",
+            "email": "news2@test.com"
+        },
+        {
+            "timestamp": "2019-05-29 15:54:51",
+            "reason": "manually_excluded",
+            "object": "exclusion",
+            "email": "else@rewind.io"
+        }
+    ],
+    "page": 1
+}
