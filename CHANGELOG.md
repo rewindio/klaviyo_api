@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.7.0]
+
+### Changed
+
+ - Updated to return count as zero, when there are no results found in klaviyo account
+  
 ## [1.6.0]
 
 ### Added
