@@ -1,10 +1,10 @@
 # CHANGELOG
 
-## [1.6.1]
+## [1.7.0]
 
 ### Changed
 
- - countable.rb now returns zero if there is a 400 error
+ - Updated to return count as zero, when there are no results found in klaviyo account
   
 ## [1.6.0]
 
