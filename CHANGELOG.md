@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.6.1]
+
+### Changed
+
+ - countable.rb now returns zero if there is a 400 error
+  
 ## [1.6.0]
 
 ### Added
